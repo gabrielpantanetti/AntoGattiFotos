@@ -635,7 +635,7 @@ q:after {
         overflow-y: auto;
         text-align: center;
         visibility: visible;
-        z-index: 10000;
+        /* z-index: 10000; */
         right: 0;
         background: #1b1c1f;
     }
@@ -926,7 +926,7 @@ q:after {
         top: 0;
         width: 4em;
         height: 4em;
-        background-image: url("../../../../assets/images/ImagenesSVGAlbum/FullScreenExpand.png");
+        /* background-image: url("../../../../assets/images/ImagenesSVGAlbum/FullScreenExpand.png"); */
         background-repeat: no-repeat;
         background-size: 32px 32px;
         cursor: pointer;
@@ -1026,10 +1026,9 @@ q:after {
     div.fullscreen #viewer {
         width: 100%;
     }
-    
-    div.fullscreen #viewer .inner .toggle {
+    /* div.fullscreen #viewer .inner .toggle {
         background-image: url("../../../../assets/images/ImagenesSVGAlbum/FullScreenExpandExit.png");
-    }
+    } */
     
     @media screen and (max-width: 1280px) {
         #viewer {

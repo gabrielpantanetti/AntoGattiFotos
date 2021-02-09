@@ -154,6 +154,8 @@ function InitGallery() {
     $('#collage-large').waitForImages(function() {
         collage();
     });
+
+    window.scrollTo(0, 0);
 }
 
 $.fn.waitForImages = function(callback) {

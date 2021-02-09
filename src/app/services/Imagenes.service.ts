@@ -1,55 +1,65 @@
-import { Injectable } from '@angular/core';
+import { Injectable } from '@angular/core'
 // https://angular.io/guide/http#adding-headers IMPORTANTE!!!
-import { HttpClient,HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http'
 
-import {map} from 'rxjs/operators';
+import { map } from 'rxjs/operators'
+import { AppSettings } from '../shared/config'
 
 export interface Imagenes {
-  Path: string; 
-  Image: string; 
-};
+  Path: string
+  Image: string
+}
 
 @Injectable()
 export class ImagenesService {
+  apiUrl = AppSettings.API_ENDPOINT + '/imagen/'
 
-  apiUrl = 'http://localhost:3000/imagen/';
- 
-  constructor( private http: HttpClient) { }  
+  constructor (private http: HttpClient) {}
 
-    getImagenesForFolder ({ folder$, ext$ }: { folder$: string; ext$: string; }){
+  getImagenesForFolder ({ folder$, ext$ }: { folder$: string; ext$: string }) {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        'Access-Control-Allow-Origin': '*',
+        'Access-Control-Allow-Methods': 'GET'
+      })
+    }
 
-      const httpOptions = {
-        headers: new HttpHeaders({
-          'Content-Type': 'application/json', 
-                              'Access-Control-Allow-Origin': '*',
-                              'Access-Control-Allow-Methods': 'GET'
-        })
-      };
+    var url = `${this.apiUrl}${folder$}/${ext$}`
 
-      
-      var url = `${ this.apiUrl }${ folder$ }/${ext$}`;
-     
-      return this.http.get<Imagenes>( url )
-      .pipe(
-        map( res => { return res; }));
-    } 
-    
-    getImagenesForSubFolder ({ folder$,subfolder$, ext$ }: { folder$: string;subfolder$: string; ext$: string; }){
+    //console.log(url);
 
-      const httpOptions = {
-        headers: new HttpHeaders({
-          'Content-Type': 'application/json', 
-                              'Access-Control-Allow-Origin': '*',
-                              'Access-Control-Allow-Methods': 'GET'
-        })
-      };
+    return this.http.get<Imagenes>(url).pipe(
+      map(res => {
+        //console.log(res)
+        return res
+      })
+    )
+  }
 
-      
-      var url = `${ this.apiUrl }${ folder$ }/${ subfolder$ }/${ext$}`;
-     
-      return this.http.get<Imagenes>( url )
-      .pipe(
-        map( res => { return res; }));
-    } 
+  getImagenesForSubFolder ({
+    folder$,
+    subfolder$,
+    ext$
+  }: {
+    folder$: string
+    subfolder$: string
+    ext$: string
+  }) {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        'Access-Control-Allow-Origin': '*',
+        'Access-Control-Allow-Methods': 'GET'
+      })
+    }
+
+    var url = `${this.apiUrl}${folder$}/${subfolder$}/${ext$}`
+
+    return this.http.get<Imagenes>(url, httpOptions).pipe(
+      map(res => {
+        return res
+      })
+    )
+  }
 }
-

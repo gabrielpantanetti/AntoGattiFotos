@@ -8,7 +8,8 @@
             </div>
             <div class="text-center col-md-5 col-sm-6">
                 <p aria-hidden="true" style="text-align: center;">
-                    <font style="font-family: 'Crete Round', serif; font-size:300%; font-weight:bold; line-height: 40pt;">
+                    <font
+                        style="font-family: 'Crete Round', serif; font-size:300%; font-weight:bold; line-height: 40pt;">
                         ¡Dejame tu Consulta!
                     </font>
                 </p>
@@ -16,10 +17,12 @@
                     <font> ¡Hola! ¿Te gustaron mis fotos?</font>
                 </p>
                 <p>
-                    <font>¿Querés averiguar disponibilidad y características del servicio? ¿Necesitas una propuesta creativa y con diseño?</font>
+                    <font>¿Querés averiguar disponibilidad y características del servicio? ¿Necesitas una propuesta
+                        creativa y con diseño?</font>
                 </p>
                 <p>
-                    <font>Por favor escribeme mediante este pequeño formulario. Podes contarme acerca de tu fiesta y planes. Las críticas y sugerencias son bienvenidas, me gustaría saber tu opinión.</font>
+                    <font>Por favor escribeme mediante este pequeño formulario. Podes contarme acerca de tu fiesta y
+                        planes. Las críticas y sugerencias son bienvenidas, me gustaría saber tu opinión.</font>
                 </p>
                 <p>
                     <font>¡Gracias por tomarte el tiempo para ver mi página!</font>
@@ -29,20 +32,24 @@
                 <!-- Gap between columns -->
             </div>
 
-            <form class="text-center col-md-5 col-sm-6  divEnviarMail" [formGroup]='forma' (ngSubmit)="SubmitContactForm()">
+            <form class="text-center col-md-5 col-sm-6  divEnviarMail" [formGroup]='forma'
+                (ngSubmit)="SubmitContactForm()">
                 <p aria-hidden="true" style="text-align: center;"></p>
 
                 <div class="form-group" [ngClass]="{ 'has-error': submitted && f.nombre.errors }">
-                    <input type="text" placeholder="Nombre" formControlName="nombre" class="form-control">
+                    <input type="text" placeholder="Nombre" formControlName="nombre" >
                     <div *ngIf="submitted && f.nombre.errors" class="has-error">
                         <div *ngIf="f.nombre.errors.required">Este campo es requerido</div>
                     </div>
                 </div>
 
-                <div class="form-group" [ngClass]="{ 'has-error': submitted && f.compania.errors }">
-                    <input type="text" placeholder="Compañía" formControlName="compania" class="form-control">
-                    <div *ngIf="submitted && f.compania.errors" class="has-error">
-                        <div *ngIf="f.compania.errors.required">Este campo es requerido</div>
+                <div class="form-group" [ngClass]="{ 'has-error': submitted && f.email.errors }">
+                    <input type="email" placeholder="Email" formControlName="email" class="form-control">
+                    <div *ngIf="submitted && f.email.errors" class="has-error">
+                        <div *ngIf="f.email.errors.required">Este campo es requerido</div>
+                    </div>
+                    <div *ngIf="submitted && f.email.errors" class="has-error">
+                        <div *ngIf="f.email.errors.email">Ingrese un Email valido</div>
                     </div>
                 </div>
 
@@ -54,8 +61,8 @@
                 </div>
 
                 <button class="btn btn-primary">
-                        <i class="fa fa-paper-plane"></i> Enviar
-            </button>
+                    <i class="fa fa-paper-plane"></i> Enviar
+                </button>
 
             </form>
         </div>

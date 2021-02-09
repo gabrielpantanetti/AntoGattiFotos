@@ -6,7 +6,7 @@ import { PagesModule } from './pages/pages.module'
 
 import { AppComponent } from './app.component';
 
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { PathLocationStrategy, LocationStrategy } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -17,7 +17,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     AppRoutingModule,   
     PagesModule
   ],
-  providers: [],
+  providers: [{provide: LocationStrategy, useClass: PathLocationStrategy}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

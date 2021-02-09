@@ -3026,7 +3026,7 @@ body.bodyNotas:after {
     cursor: default;
     position: relative;
     text-align: center;
-    z-index: 10001;
+    /* z-index: 10001; */
 }
 
 #headerNotas>.logo {

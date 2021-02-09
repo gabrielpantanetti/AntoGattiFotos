@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 // https://angular.io/guide/http#adding-headers IMPORTANTE!!!
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
-import { map } from 'rxjs/operators';
+import { AppSettings } from '../shared/config';
 
 export interface Imagenes {
   Path: string;
@@ -12,7 +12,7 @@ export interface Imagenes {
 @Injectable()
 export class EmailService {
 
-  apiUrl = 'http://localhost:3000/email/';
+  apiUrl = AppSettings.API_ENDPOINT + 'email/';
 
   constructor(private http: HttpClient) { }
 

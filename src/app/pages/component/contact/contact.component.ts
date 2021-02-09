@@ -3,6 +3,8 @@ import { EmailService } from 'src/app/services/email.service';
 import { NgForm, FormGroup, Validators, FormControl } from '@angular/forms';
 
 import Swal from 'sweetalert2'
+declare var bootbox:any;
+declare var $:any;
 
 @Component({
   selector: 'app-contact',
@@ -18,7 +20,7 @@ export class ContactComponent {
 
   email: Object = {
     nombre: "",
-    compania: "",
+    email: "",
     message: ""
   }
 
@@ -31,7 +33,7 @@ export class ContactComponent {
     this.forma = new FormGroup({
 
       'nombre': new FormControl('', Validators.required),
-      'compania': new FormControl('', Validators.required),
+      'email': new FormControl('', [Validators.required, Validators.email]),
       'message': new FormControl('', Validators.required)
     });
 
@@ -40,8 +42,8 @@ export class ContactComponent {
 
   SubmitContactForm() {
 
-    console.log(this.forma);
-    console.log(this.forma.value);
+    //console.log(this.forma);
+    //console.log(this.forma.value);
 
     this.submitted = true;
 
@@ -50,7 +52,17 @@ export class ContactComponent {
       return;
     }
 
+     var dialog = bootbox.dialog({
+      message: '<p class="text-center mb-0"><i class="fa fa-spin fa-cog"></i> Enviando email...</p>',
+      className: 'rubberBand animated',
+      closeButton: false
+    });
+
     this._EmailService.sendMessage(this.forma.value).subscribe(() => {
+
+      // do something in the background
+      dialog.modal('hide');
+
       //Swal("Formulario de contacto, Mensaje enviado correctamente");
       Swal.fire({
         //position: 'top-end',
@@ -60,11 +72,11 @@ export class ContactComponent {
         timer: 1500
       })
     });
-    
+
     this.forma.controls['nombre'].reset();
-    this.forma.controls['compania'].setValue("");
-    this.forma.controls['message'].setValue("");
-    
+    this.forma.controls['email'].reset();
+    this.forma.controls['message'].reset();
+
     this.forma.markAsPristine();
     this.forma.markAsUntouched();
     this.forma.updateValueAndValidity();

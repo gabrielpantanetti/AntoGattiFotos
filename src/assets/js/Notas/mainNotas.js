@@ -42,4 +42,5 @@ function InitNotas() {
 
     });
 
+    window.scrollTo(0, 0)
 };

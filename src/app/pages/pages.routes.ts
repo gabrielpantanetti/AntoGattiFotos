@@ -9,9 +9,7 @@ import { NotasCompleta2Component } from './component/notas-completa2/notas-compl
 const pagesRoutes: Routes = [    
     {
         path: '',
-        component: PagesComponent
-        //canActivate: [ LoginGuardGuard ],
-        //loadChildren: './pages/pages.module#PagesModule'
+        component: PagesComponent        
     },{
         path: 'Album/:id',
         component: PagesAlbumComponent       
@@ -26,7 +24,7 @@ const pagesRoutes: Routes = [
         path: 'NotasCompleta2',
         component: NotasCompleta2Component       
     }
-    //,{ path: '**', component: NopagefoundComponent }
+    //,{ path: '**', component: PagesComponent }
 ];
 
 

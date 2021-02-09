@@ -32,8 +32,8 @@ export class HomeComponent implements OnInit {
     this._imgService.getImagenesForFolder({ folder$: folder, ext$: ext }).subscribe(data => {
       this.SliderCollectionsImages = data
 
-      console.log(this.SliderCollectionsImages);
-    });
+      //console.log(this.SliderCollectionsImages);
+    },error => console.log(error));
 
 
     //return this._imgService.getImagenesForFolder("","");

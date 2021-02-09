@@ -37,9 +37,10 @@
                             "src/assets/css/Notas/NotasCompletas/NotaCompleta.css"
                         ],
                         "scripts": [
-                            "src/assets/js/jquery.min.js",
+                            "src/assets/js/jquery-1.12.4.js",
                             "src/assets/js/jquery.collagePlus.js",
                             "src/assets/lib/bootstrap/dist/js/bootstrap.min.js",
+                            "src/assets/js/bootbox.all.min.js",
                             "src/assets/js/wow.min.js",
                             "src/assets/js/mobile/touchSwipe.min.js",
                             "src/assets/js/swiper.js",
